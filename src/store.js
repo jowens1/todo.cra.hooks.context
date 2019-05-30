@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import {
   TodoListReducer,
   TodoListInitialState
-} from "./reducers/TodoList/TodoListReducer";
+} from "./reducers/TodoList/todoList.reducer";
 
 const TodoListStore = React.createContext();
 

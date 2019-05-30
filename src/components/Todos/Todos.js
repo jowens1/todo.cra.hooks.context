@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useMemo } from "react";
+import React, { Fragment, useContext } from "react";
 import { TodoListStore } from "../../store";
 import TodoList from "./TodoList/TodoList";
 import { createTodo } from "../../actions/TodoList/todoList.action";
@@ -6,7 +6,11 @@ import { createTodo } from "../../actions/TodoList/todoList.action";
 export default function Todos() {
   const value = useContext(TodoListStore);
   const { dispatch } = value;
-  const handleClick = name => () => createTodo(dispatch, name);
+  function handleClick(name) {
+    return function callback() {
+      createTodo(dispatch, name);
+    };
+  }
 
   return (
     <Fragment>

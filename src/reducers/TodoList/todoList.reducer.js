@@ -21,7 +21,6 @@ export function TodoListReducer(state, action) {
       let newState = _.cloneDeep(state);
       baseTodo.name = action.payload;
       newState.todoList.push(baseTodo);
-      console.log("newState", newState);
       return newState;
     }
     case TODOLIST_ACTIONS.DELETE: {
