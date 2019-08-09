@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
+import styles from './App.module.css';
 import Todos from '../../components/Todos/Todos';
 import { ContextTodoListProvider } from '../../store';
 
 const App = () => (
-  <div className="App">
+  <div className={styles.container}>
     <ContextTodoListProvider>
       <h1>Todo App</h1>
       <Todos />
