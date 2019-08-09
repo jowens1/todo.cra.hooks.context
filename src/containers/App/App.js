@@ -3,7 +3,7 @@ import "./App.css";
 import Todos from "../../components/Todos/Todos";
 import { ContextTodoListProvider } from "../../store";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <ContextTodoListProvider>
