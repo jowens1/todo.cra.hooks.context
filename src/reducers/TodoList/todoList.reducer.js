@@ -1,10 +1,10 @@
-import _ from "lodash";
+import _ from 'lodash';
 import {
-  TODOLIST_ACTIONS
-} from "../../actions/TodoList/todoList.action";
+  TODOLIST_ACTIONS,
+} from '../../actions/TodoList/todoList.action';
 
 export const TodoListInitialState = {
-  todoList: []
+  todoList: [],
 };
 
 export const TodoListReducer = (state, action) => {
@@ -14,13 +14,13 @@ export const TodoListReducer = (state, action) => {
     }
     case TODOLIST_ACTIONS.ADD: {
       const baseTodo = {
-        id: '_' + Math.random().toString(36).substr(2, 9),
+        id: `_${Math.random().toString(36).substr(2, 9)}`,
         date: Date.now(),
         name: action.payload,
         items: [],
-        completed: false
+        completed: false,
       };
-      let newState = _.cloneDeep(state);
+      const newState = _.cloneDeep(state);
 
       newState.todoList.push(baseTodo);
       return newState;
@@ -29,11 +29,11 @@ export const TodoListReducer = (state, action) => {
       return state.filter(item => item.id !== action.payload);
     }
     case TODOLIST_ACTIONS.COMPLETE: {
-      return state.map(item => {
+      return state.map((item) => {
         if (item.id === action.payload) {
           return {
             ...item,
-            completed: !item.completed
+            completed: !item.completed,
           };
         }
         return item;
@@ -43,4 +43,4 @@ export const TodoListReducer = (state, action) => {
       return state;
     }
   }
-}
+};

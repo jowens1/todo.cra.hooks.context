@@ -1,8 +1,8 @@
 export const TODOLIST_ACTIONS = {
-  ADD: "add",
-  DELETE: "delete",
-  COMPLETE: "completed",
-  RESET: "reset"
+  ADD: 'add',
+  DELETE: 'delete',
+  COMPLETE: 'completed',
+  RESET: 'reset',
 };
 
 export const createTodo = (dispatch, payload) => {

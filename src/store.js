@@ -1,24 +1,24 @@
-import React, { useReducer } from "react";
+/* eslint-disable react/prop-types */
+import React, { useReducer } from 'react';
 import {
   TodoListReducer,
-  TodoListInitialState
-} from "./reducers/TodoList/todoList.reducer";
+  TodoListInitialState,
+} from './reducers/TodoList/todoList.reducer';
 
-const TodoListStore = React.createContext();
+export const TodoListStore = React.createContext();
 
-function ContextTodoListProvider(props) {
+export const ContextTodoListProvider = (props) => {
   const [state, dispatch] = useReducer(TodoListReducer, TodoListInitialState);
   const value = { state, dispatch };
-
+  const { children } = props;
   return (
     <TodoListStore.Provider value={value}>
-      {props.children}
+      {children}
     </TodoListStore.Provider>
   );
-}
+};
 
-function ContextTodoListConsumer(props) {
-  return <TodoListStore.Consumer>{props.children}</TodoListStore.Consumer>;
-}
-
-export { TodoListStore, ContextTodoListProvider, ContextTodoListConsumer };
+export const ContextTodoListConsumer = (props) => {
+  const { children } = props;
+  return <TodoListStore.Consumer>{children}</TodoListStore.Consumer>;
+};
