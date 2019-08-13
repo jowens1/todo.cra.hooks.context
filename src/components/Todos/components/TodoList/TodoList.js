@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styles from './TodoList.module.css';
 import Todo from '../Todo/Todo';
-import { TodoListStore } from '../../../store';
+import { TodoListStore } from '../../../../store';
 
 
 const TodoList = () => {

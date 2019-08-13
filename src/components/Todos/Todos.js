@@ -1,18 +1,28 @@
 /* eslint-disable react/button-has-type */
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
+import styles from './Todos.module.css';
+import Button from '../../common/Button/Button';
+import TodoList from './components/TodoList/TodoList';
 import { TodoListStore } from '../../store';
-import TodoList from './TodoList/TodoList';
 import { createTodolist } from '../../actions/TodoList/todoList.action';
+
 
 const Todos = () => {
   const value = useContext(TodoListStore);
   const { dispatch } = value;
-
+  const handleClick = () => createTodolist(dispatch, 'New Todolist');
+  const props = {
+    handleClick,
+    name: 'New List',
+    type: 'add',
+  };
   return (
-    <Fragment>
+    <div className={styles.container}>
+      {'pretty stuff here'}
       <TodoList />
-      <button onClick={() => createTodolist(dispatch, 'New Todolist')}>New Todolist</button>
-    </Fragment>
+      {'pretty stuff here'}
+      <Button {...props} />
+    </div>
   );
 };
 
