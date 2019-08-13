@@ -21,7 +21,10 @@ const Todos = () => {
       {'pretty stuff here'}
       <TodoList />
       {'pretty stuff here'}
-      <Button {...props} />
+      <div>
+        <Button {...props} />
+      </div>
+
     </div>
   );
 };
