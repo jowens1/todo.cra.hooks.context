@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './App.module.css';
-import Todos from '../../components/Todos/Todos';
+import Todos from '../Todos/Todos';
 import { ContextTodoListProvider } from '../../store';
 
 const App = () => (

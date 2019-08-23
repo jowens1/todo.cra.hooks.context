@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import styles from './Todo.module.css';
 import Button from '../../../../common/Button/Button';
 import { TodoListStore } from '../../../../store';
@@ -24,4 +24,4 @@ const Todo = (todo) => {
   );
 };
 
-export default Todo;
+export default memo(Todo);
