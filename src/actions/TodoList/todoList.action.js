@@ -12,4 +12,3 @@ export const createTodolist = (dispatch, payload) => {
 export const creatTodo = (dispatch, payload) => {
   dispatch({ type: TODOLIST_ACTIONS.ADD_TODO, payload });
 };
-
