@@ -17,14 +17,13 @@ const Todos = () => {
   };
 
   return (
-    <div className={styles.container}>
-      {'pretty stuff here'}
-      <TodoList />
-      {'pretty stuff here'}
+    <div>
+      <div className={styles.container}>
+        <TodoList />
+      </div>
       <div>
         <Button {...props} />
       </div>
-
     </div>
   );
 };

@@ -1,9 +1,4 @@
 .container {
     display: flex;
-    flex-direction: column;
-    border-block-end-width: 1px;
-}
-
-.button {
-    width: 20%;
+    flex-direction: column;  
 }

@@ -1,4 +1,9 @@
 .container {
+    border-style: solid;
+    border-width: 1px;
+}
+
+.list {
     display: flex;
     justify-content: center;
 }
