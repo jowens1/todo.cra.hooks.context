@@ -9,4 +9,15 @@
 .item {
     display: flex;
     flex-direction: column;
+    
+}
+
+.itemTop {
+    border-top: 1px solid;
+}
+
+.itemsContainer {
+    border-style: solid;
+    border-width: 1px;
+    width: 80%;
 }

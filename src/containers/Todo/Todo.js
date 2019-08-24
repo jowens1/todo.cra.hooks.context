@@ -1,5 +1,6 @@
 /* eslint-disable react/button-has-type */
 import React, { useContext, memo } from 'react';
+import classNames from 'classnames';
 import styles from './Todo.module.css';
 import Button from '../../common/Button/Button';
 import { TodoListStore } from '../../store';
@@ -16,10 +17,11 @@ const Todo = (todo) => {
     type: 'add',
   };
 
-  const todoItems = () => todo.items.map(item => (
+
+  const todoItems = () => todo.items.map((item, index) => (
     <div
       key={item.id}
-      className={styles.item}
+      className={index > 0 ? classNames(styles.item, styles.itemTop) : styles.item}
     >
       <p>{item.name}</p>
       <p>{`Completed: ${item.completed}`}</p>
@@ -31,7 +33,7 @@ const Todo = (todo) => {
     <div className={styles.container}>
       {'Todo'}
       <Button {...props} />
-      <div>
+      <div className={todo.items.length ? styles.itemsContainer : ''}>
         {todoItems()}
       </div>
     </div>
