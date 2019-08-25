@@ -13,14 +13,12 @@ const findId = (items, id) => items.find(item => item.id === id);
 export const TodoListReducer = (state, action) => {
   switch (action.type) {
     case TODOLIST_ACTIONS.GET: {
-      console.log('action', action);
       const newState = _.cloneDeep(state);
       action.payload.todoList.forEach((list) => {
         if (state.todoList.find(todo => todo.id === list.id)) return;
         newState.todoList.push(list);
       });
-
-      return newState.todoList.length === state.todoList.length ? state : newState;
+      return newState;
     }
     case TODOLIST_ACTIONS.ADD: {
       const baseTodolist = {

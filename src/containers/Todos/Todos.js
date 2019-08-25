@@ -9,7 +9,7 @@ import { createTodolist } from '../../actions/TodoList/todoList.action';
 
 const Todos = () => {
   const value = useContext(TodoListStore);
-  useEffect(() => value.actions.getTodoList(), [value.state]);
+  useEffect(() => value.actions.getTodoList(), []);
 
   const props = {
     handleClick: () => createTodolist(value.dispatch, 'New Todolist'),
