@@ -3,7 +3,12 @@ export const TODOLIST_ACTIONS = {
   ADD_TODO: 'ADD_TODO',
   DELETE: 'DELETE',
   COMPLETE: 'COMPLETED',
+  GET: 'GET',
 };
+
+export const apiInterface = dispatch => ({
+  getTodoList: data => dispatch({ type: TODOLIST_ACTIONS.GET, payload: data }),
+});
 
 export const createTodolist = (dispatch, payload) => {
   dispatch({ type: TODOLIST_ACTIONS.ADD, payload });
