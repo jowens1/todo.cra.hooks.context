@@ -4,12 +4,13 @@
     width: 100%;
     align-items: center;
     background-color: aliceblue;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .item {
     display: flex;
     flex-direction: column;
-    
 }
 
 .itemTop {
@@ -20,4 +21,5 @@
     border-style: solid;
     border-width: 1px;
     width: 80%;
+    margin-bottom: 30px;
 }

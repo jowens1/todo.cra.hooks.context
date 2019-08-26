@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import React, { useContext, memo } from 'react';
+import React, { useContext, useState, memo } from 'react';
 import classNames from 'classnames';
 import styles from './Todo.module.css';
 import Button from '../../common/Button/Button';
@@ -9,14 +9,13 @@ import { creatTodo } from '../../actions/TodoList/todoList.action';
 const Todo = (todo) => {
   const value = useContext(TodoListStore);
   const { dispatch } = value;
-  const handleClick = () => creatTodo(dispatch, { name: 'Todo Item', id: todo.id });
-
-  const props = {
+  const [input, setInput] = useState();
+  const handleClick = () => creatTodo(dispatch, { name: input, id: todo.id });
+  const buttonProps = {
     handleClick,
     name: 'New Todo',
     type: 'add',
   };
-
 
   const todoItems = () => todo.items.map((item, index) => (
     <div
@@ -28,11 +27,14 @@ const Todo = (todo) => {
     </div>
   ));
 
-
   return (
     <div className={styles.container}>
-      {'Todo'}
-      <Button {...props} />
+      {'Create New Todo'}
+      <input
+        type="text"
+        onChange={e => setInput(e.target.value)}
+      />
+      <Button {...buttonProps} />
       <div className={todo.items.length ? styles.itemsContainer : ''}>
         {todoItems()}
       </div>
