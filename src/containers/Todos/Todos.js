@@ -3,16 +3,16 @@ import React, { useContext, useEffect, memo } from 'react';
 import styles from './Todos.module.css';
 import Button from '../../common/Button/Button';
 import TodoList from '../../components/Todos/components/TodoList/TodoList';
-import { TodoListStore } from '../../store';
+import { useTodoListContext } from '../../store';
 import { createTodolist } from '../../actions/TodoList/todoList.action';
 
 
 const Todos = () => {
-  const value = useContext(TodoListStore);
+  const value = useTodoListContext();
   useEffect(() => value.actions.getTodoList(), []);
 
   const props = {
-    handleClick: () => createTodolist(value.dispatch, 'New Todolist'),
+    handleClick: () => createTodolist(value.dispatch),
     name: 'New List',
     type: 'add',
   };

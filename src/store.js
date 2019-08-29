@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext } from 'react';
 import { apiInterface } from './actions/TodoList/todoList.action';
 import {
   TodoListReducer,
@@ -8,10 +8,11 @@ import {
 import APImiddleware from './middleware/API/API.middleware';
 
 export const TodoListStore = React.createContext();
+export const useTodoListContext = () => useContext(TodoListStore);
 
 export const ContextTodoListProvider = (props) => {
   const [state, dispatch] = useReducer(TodoListReducer, TodoListInitialState);
-  // const value = { state, dispatch };
+
   const apiDispatch = APImiddleware(dispatch);
   const actions = apiInterface(apiDispatch);
 
@@ -28,5 +29,5 @@ export const ContextTodoListProvider = (props) => {
 
 export const ContextTodoListConsumer = (props) => {
   const { children } = props;
-  return <TodoListStore.Consumer>{children}</TodoListStore.Consumer>;
+  return <TodoListStore.Consumer data-test="todoListConsumer">{children}</TodoListStore.Consumer>;
 };

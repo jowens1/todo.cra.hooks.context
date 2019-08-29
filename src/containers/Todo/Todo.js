@@ -1,13 +1,13 @@
 /* eslint-disable react/button-has-type */
-import React, { useContext, memo } from 'react';
+import React, { memo } from 'react';
 import classNames from 'classnames';
 import styles from './Todo.module.css';
 import Button from '../../common/Button/Button';
-import { TodoListStore } from '../../store';
+import { useTodoListContext } from '../../store';
 import { creatTodo } from '../../actions/TodoList/todoList.action';
 
 const Todo = (todo) => {
-  const value = useContext(TodoListStore);
+  const value = useTodoListContext();
   const { dispatch } = value;
   const handleClick = () => creatTodo(dispatch, { name: 'Todo Item', id: todo.id });
 
@@ -16,7 +16,6 @@ const Todo = (todo) => {
     name: 'New Todo',
     type: 'add',
   };
-
 
   const todoItems = () => todo.items.map((item, index) => (
     <div
