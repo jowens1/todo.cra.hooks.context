@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { wrap } from 'module';
 import Todos from './Todos';
 import * as TodoContext from '../../store';
 
