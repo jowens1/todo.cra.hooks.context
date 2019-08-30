@@ -1,10 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import App from './App';
 
-// eslint-disable-next-line no-undef
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+const setup = () => shallow(<App />);
+
+describe('App container', () => {
+  const wrapper = setup();
+
+  test('renders Header container', () => {
+    expect(wrapper.find('Memo(Header)').length).toBe(1);
+  });
+
+  test('renders Todos container', () => {
+    expect(wrapper.find('Memo(Todos)').length).toBe(1);
+  });
 });

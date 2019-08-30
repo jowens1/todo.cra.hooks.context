@@ -4,5 +4,4 @@ const Header = () => (
   <h1>Todo App</h1>
 );
 
-
 export default memo(Header);
