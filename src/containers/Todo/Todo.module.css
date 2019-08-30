@@ -8,13 +8,18 @@
     border-width: 1px;
 }
 
-.item {
-    display: flex;
-    flex-direction: column;
+.itemContainer {
+    padding: 12px;
 }
 
-.itemTop {
+.itemContainerTop {
     border-top: 1px solid;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
 }
 
 .itemsContainer {

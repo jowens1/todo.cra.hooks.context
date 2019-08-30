@@ -40,6 +40,10 @@ export const TodoListReducer = (state, action) => {
       findId(newState.todoList, action.payload.id).items.push(baseTodo);
       return newState;
     }
+    case TODOLIST_ACTIONS.COMPLETE: {
+      console.log('action', action);
+      return state;
+    }
     default: {
       return state;
     }

@@ -2,30 +2,36 @@
 import React, { useContext, useState, memo } from 'react';
 import classNames from 'classnames';
 import styles from './Todo.module.css';
+import { NEW_TODO_BUTTON } from './Todo.constants';
 import Button from '../../common/Button/Button';
 import { TodoListStore } from '../../store';
-import { creatTodo } from '../../actions/TodoList/todoList.action';
+import { creatTodo, completeTodo } from '../../actions/TodoList/todoList.action';
 
 const Todo = (todo) => {
   const value = useContext(TodoListStore);
-  const { dispatch } = value;
   const [input, setInput] = useState();
+  const { dispatch } = value;
+
   const handleClick = () => creatTodo(dispatch, { name: input, id: todo.id });
-  const buttonProps = {
-    handleClick,
-    name: 'New Todo',
-    type: 'add',
-  };
+  const handleCheck = event => completeTodo(dispatch, event.target);
 
   const todoItems = () => todo.items.map((item, index) => (
     <div
       key={item.id}
-      className={index > 0 ? classNames(styles.item, styles.itemTop) : styles.item}
+      className={index > 0 ? classNames(styles.itemContainer, styles.itemContainerTop) : styles.item}
     >
-      <p>{item.name}</p>
-      <p>{`Completed: ${item.completed}`}</p>
+      <div className={styles.item}>
+        <input type="checkbox" name={item.name} checked={item.completed} onChange={handleCheck} />
+        {item.name}
+      </div>
     </div>
   ));
+
+  const buttonProps = {
+    handleClick,
+    name: NEW_TODO_BUTTON.TITLE,
+    type: NEW_TODO_BUTTON.TYPE,
+  };
 
   return (
     <div className={styles.container}>

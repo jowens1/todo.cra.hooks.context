@@ -1,0 +1,56 @@
+{
+    "id": "mockoon_export",
+    "appVersion": "1.4.0",
+    "checksum": "046c86b671d6c63d76d3a69e5ace9884",
+    "subject": "full",
+    "data": [
+        {
+            "uuid": "c19dda20-cae5-11e9-8251-41933c14cf03",
+            "name": "New environment",
+            "endpointPrefix": "",
+            "latency": 0,
+            "port": 12345,
+            "routes": [
+                {
+                    "uuid": "",
+                    "documentation": "",
+                    "method": "get",
+                    "endpoint": "todoList",
+                    "body": "{\n    \"todoList\": [\n        {\n        \"date\": 1566696029745,\n        \"id\": \"_a0x4x1no5\",\n        \"items\": [\n            {\n                \"completed\": true,\n                \"id\": \"_a4z7cihic\",\n                \"name\": \"Create Todo Mock\"\n            }]\n        }\n        ]\n        \n}",
+                    "latency": 0,
+                    "statusCode": "200",
+                    "headers": [
+                        {
+                            "key": "",
+                            "value": ""
+                        }
+                    ],
+                    "filePath": "",
+                    "sendFileAsBody": false
+                }
+            ],
+            "proxyMode": false,
+            "proxyHost": "",
+            "https": false,
+            "cors": true,
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "*"
+                },
+                {
+                    "key": "Access-Control-Allow-Methods",
+                    "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+                },
+                {
+                    "key": "Access-Control-Allow-Headers",
+                    "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+                }
+            ]
+        }
+    ]
+}
