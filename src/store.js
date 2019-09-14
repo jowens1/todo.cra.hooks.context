@@ -26,8 +26,3 @@ export const ContextTodoListProvider = (props) => {
     </TodoListStore.Provider>
   );
 };
-
-export const ContextTodoListConsumer = (props) => {
-  const { children } = props;
-  return <TodoListStore.Consumer data-test="todoListConsumer">{children}</TodoListStore.Consumer>;
-};

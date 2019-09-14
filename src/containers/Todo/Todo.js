@@ -1,25 +1,28 @@
 /* eslint-disable react/button-has-type */
-import React, { memo } from 'react';
+import React, { useState, useContext, memo } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './Todo.module.css';
 import { NEW_TODO_BUTTON } from './Todo.constants';
 import Button from '../../common/Button/Button';
 import { useTodoListContext } from '../../store';
-import { creatTodo } from '../../actions/TodoList/todoList.action';
+import { creatTodo, completeTodo } from '../../actions/TodoList/todoList.action';
 
 const Todo = (todo) => {
   const value = useTodoListContext();
+  const [input, setInput] = useState();
   const { dispatch } = value;
+
+  const handleClick = () => creatTodo(dispatch, { name: 'Todo Item', id: todo.id });
+  const handleCheck = event => completeTodo(dispatch, event.target);
 
   const todoItems = () => todo.items.map((item, index) => (
     <div
       key={item.id}
       className={index > 0 ? classNames(styles.itemContainer, styles.itemContainerTop) : styles.item}
     >
-      <div className={styles.item}>
-        <input type="checkbox" name={item.name} checked={item.completed} onChange={handleCheck} />
-        {item.name}
-      </div>
+      <input type="checkbox" name={item.name} checked={item.completed} onChange={handleCheck} />
+      {item.name}
     </div>
   ));
 
