@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import React, { useContext, useEffect, memo } from 'react';
+import React, { useEffect, memo } from 'react';
 import styles from './Todos.module.css';
 import Button from '../../common/Button/Button';
 import TodoList from '../../components/Todos/components/TodoList/TodoList';

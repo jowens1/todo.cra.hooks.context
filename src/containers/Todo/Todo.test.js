@@ -1,9 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import * as TodoContext from '../../store';
+import { mount } from 'enzyme';
+import { TodoListStore } from '../../store';
 import Todo from './Todo';
 
-const contextValues = { dispatch: jest.fn() };
+const setup = todo => mount(
+  <TodoListStore.Provider value={{ dispatch: jest.fn() }}>
+    <Todo {...todo} />
+  </TodoListStore.Provider>,
+);
+
+const setState = jest.fn();
+const useStateSpy = jest.spyOn(React, 'useState');
+useStateSpy.mockImplementation(init => [init, setState]);
+
 
 const todoWithItems = {
   items: [
@@ -22,31 +31,21 @@ const todoWithoutItems = {
   items: [],
 };
 
-const setup = todo => shallow(<Todo {...todo} />);
-
-jest
-  .spyOn(TodoContext, 'useTodoListContext')
-  .mockImplementation(() => contextValues);
-
 describe('Todo', () => {
-  describe('todoItems', () => {
-    const wrapperWithItems = setup(todoWithItems);
-    const wrapperWithoutItems = setup(todoWithoutItems);
-
-    test('todoItems renders with items', () => {
-      expect(wrapperWithItems.find('[className="item"]').length).toBe(1);
+  describe('With Items', () => {
+    const wrapperWithItems = setup({ ...todoWithItems });
+    afterAll(() => {
+      jest.clearAllMocks();
+      wrapperWithItems.unmount();
     });
 
-    test('itemsContainer renders', () => {
-      expect(wrapperWithItems.find('[className="itemsContainer"]').length).toBe(1);
+    test('should get context with items', () => {
+      expect(wrapperWithItems.find('.itemsContainer').children().length).toBe(2);
     });
 
-    test('itemsTop rends', () => {
-      expect(wrapperWithItems.find('[className="item itemTop"]'));
-    });
-
-    test('todo does not render without items', () => {
-      expect(wrapperWithoutItems.find('[className="item itemTop"]').length).toBe(0);
+    test('Input thingy', () => {
+      wrapperWithItems.find('input[type="text"]').simulate('change', setState('test'));
+      expect(setState).toHaveBeenCalledWith('test');
     });
   });
 });

@@ -4,20 +4,27 @@
     width: 100%;
     align-items: center;
     background-color: aliceblue;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.itemContainer {
+    padding: 12px;
+}
+
+.itemContainerTop {
+    border-top: 1px solid;
 }
 
 .item {
     display: flex;
-    flex-direction: column;
-    
-}
-
-.itemTop {
-    border-top: 1px solid;
+    justify-content: center;
+    padding: 10px;
 }
 
 .itemsContainer {
     border-style: solid;
     border-width: 1px;
     width: 80%;
+    margin-bottom: 30px;
 }

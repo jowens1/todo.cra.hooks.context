@@ -1,37 +1,44 @@
 /* eslint-disable react/button-has-type */
-import React, { memo } from 'react';
+import React, { useState, memo } from 'react';
 import classNames from 'classnames';
 import styles from './Todo.module.css';
+import { NEW_TODO_BUTTON } from './Todo.constants';
 import Button from '../../common/Button/Button';
 import { useTodoListContext } from '../../store';
-import { creatTodo } from '../../actions/TodoList/todoList.action';
+import { creatTodo, completeTodo } from '../../actions/TodoList/todoList.action';
 
 const Todo = (todo) => {
   const value = useTodoListContext();
+  const [input, setInput] = useState();
   const { dispatch } = value;
-  const handleClick = () => creatTodo(dispatch, { name: 'Todo Item', id: todo.id });
 
-  const props = {
-    handleClick,
-    name: 'New Todo',
-    type: 'add',
-  };
+  const handleClick = () => creatTodo(dispatch, { name: input, id: todo.id });
+  const handleCheck = event => completeTodo(dispatch, event.target);
 
   const todoItems = () => todo.items.map((item, index) => (
     <div
       key={item.id}
-      className={index > 0 ? classNames(styles.item, styles.itemTop) : styles.item}
+      className={index > 0 ? classNames(styles.itemContainer, styles.itemContainerTop) : styles.item}
     >
-      <p>{item.name}</p>
-      <p>{`Completed: ${item.completed}`}</p>
+      <input type="checkbox" name={item.name} checked={item.completed} onChange={handleCheck} />
+      {item.name}
     </div>
   ));
 
+  const buttonProps = {
+    handleClick,
+    name: NEW_TODO_BUTTON.TITLE,
+    type: NEW_TODO_BUTTON.TYPE,
+  };
 
   return (
     <div className={styles.container}>
-      {'Todo'}
-      <Button {...props} />
+      {'Create New Todo'}
+      <input
+        type="text"
+        onChange={e => setInput(e.target.value)}
+      />
+      <Button {...buttonProps} />
       <div className={todo.items.length ? styles.itemsContainer : ''}>
         {todoItems()}
       </div>
