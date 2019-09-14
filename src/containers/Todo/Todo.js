@@ -1,6 +1,5 @@
 /* eslint-disable react/button-has-type */
-import React, { useState, useContext, memo } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, memo } from 'react';
 import classNames from 'classnames';
 import styles from './Todo.module.css';
 import { NEW_TODO_BUTTON } from './Todo.constants';
@@ -13,7 +12,7 @@ const Todo = (todo) => {
   const [input, setInput] = useState();
   const { dispatch } = value;
 
-  const handleClick = () => creatTodo(dispatch, { name: 'Todo Item', id: todo.id });
+  const handleClick = () => creatTodo(dispatch, { name: input, id: todo.id });
   const handleCheck = event => completeTodo(dispatch, event.target);
 
   const todoItems = () => todo.items.map((item, index) => (
