@@ -2,7 +2,7 @@
 import React, { useEffect, memo } from 'react';
 import styles from './Todos.module.css';
 import Button from '../../common/Button/Button';
-import TodoList from '../../components/Todos/components/TodoList/TodoList';
+import TodoList from '../TodoList/TodoList';
 import { useTodoListContext } from '../../store';
 import { createTodolist } from '../../actions/TodoList/todoList.action';
 
