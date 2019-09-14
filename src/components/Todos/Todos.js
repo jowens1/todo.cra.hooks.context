@@ -9,6 +9,7 @@ import { createTodolist } from '../../actions/TodoList/todoList.action';
 
 const Todos = () => {
   const value = useTodoListContext();
+  // eslint-disable-next-line
   useEffect(() => value.actions.getTodoList(), []);
 
   const props = {
