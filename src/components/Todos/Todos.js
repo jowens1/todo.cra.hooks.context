@@ -9,11 +9,12 @@ import { createTodolist } from '../../actions/TodoList/todoList.action';
 
 const Todos = () => {
   const value = useTodoListContext();
+  const { dispatch } = value;
   // eslint-disable-next-line
   useEffect(() => value.actions.getTodoList(), []);
 
   const props = {
-    handleClick: () => createTodolist(value.dispatch),
+    onClick: () => createTodolist(dispatch),
     name: 'New List',
     type: 'add',
   };
@@ -24,7 +25,9 @@ const Todos = () => {
         <TodoList />
       </div>
       <div>
-        <Button {...props} />
+        <Button {...props}>
+          {'New List'}
+        </Button>
       </div>
     </div>
   );
