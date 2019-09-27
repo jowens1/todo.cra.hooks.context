@@ -6,6 +6,7 @@
     "ajv": "^6.10.2",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
+    "jest-styled-components": "^6.3.3",
     "lodash": "^4.17.15",
     "lodash.template": ">=4.5.0",
     "prop-types": "^15.7.2",
@@ -20,7 +21,8 @@
     "test": "react-scripts test",
     "testcoverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
-    "lint": "npx eslint src"
+    "lint": "npx eslint src",
+    "lint:css": "stylelint './src/**/*.js'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,7 +50,11 @@
     "eslint-plugin-jest": "^22.15.0",
     "eslint-plugin-react": "^7.14.3",
     "jest-enzyme": "^7.1.0",
-    "moxios": "^0.4.0"
+    "moxios": "^0.4.0",
+    "stylelint": "^11.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.8.0"
   },
   "jest": {
     "collectCoverageFrom": [

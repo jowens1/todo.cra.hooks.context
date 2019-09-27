@@ -11,7 +11,7 @@ const Todo = (todo) => {
   const value = useTodoListContext();
   const [input, setInput] = useState(' ');
   const { dispatch } = value;
-  const onClick = () => creatTodo(dispatch, { name: input, id: todo.id });
+  const handleButtonClick = () => creatTodo(dispatch, { name: input, id: todo.id });
   const handleCheck = event => completeTodo(dispatch, event.target);
   const handleChange = event => setInput(event.target.value.trim());
   const todoItems = () => todo.items.map((item, index) => (
@@ -26,11 +26,6 @@ const Todo = (todo) => {
       {item.name}
     </div>
   ));
-  const buttonProps = {
-    onClick,
-    name: NEW_TODO_BUTTON.TITLE,
-    type: NEW_TODO_BUTTON.TYPE,
-  };
 
   return (
     <div className={styles.container}>
@@ -40,7 +35,7 @@ const Todo = (todo) => {
         onChange={handleChange}
         value={input}
       />
-      <Button {...buttonProps} />
+      <Button onClick={handleButtonClick} />
       <div className={todo.items.length ? styles.itemsContainer : ''}>
         {todoItems()}
       </div>
