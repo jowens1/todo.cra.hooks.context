@@ -1,11 +1,11 @@
 import React, { useContext, memo } from 'react';
 import styles from './TodoList.module.css';
 import Todo from '../Todo/Todo';
-import { TodoListStore } from '../../store';
+import { AppStore } from '../../store';
 
 
 const TodoList = () => {
-  const value = useContext(TodoListStore);
+  const value = useContext(AppStore);
   const {
     state: { todoList },
   } = value;

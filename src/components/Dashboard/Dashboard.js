@@ -1,19 +1,22 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import Card from '../../common/Card/Card';
+import styled from 'styled-components';
 
-const props = [{
-  id: 0,
-  title: 'Todos',
-}, {
-  id: 1,
-  title: 'Notes',
-}];
-
-const buildCards = cards => cards.map(card => <Card {...card} />);
-
-const Dashboard = () => (
-  <div>
-    {buildCards(props)}
+const Dashboard = ({ className, children }) => (
+  <div className={className}>
+    <div className={className}>
+      {children}
+    </div>
   </div>
 );
-export default Dashboard;
+
+const StyledDashboard = styled(Dashboard)`
+  display: flex;
+  justify-content: center;
+
+  div {
+    padding: 15px;
+  }
+`;
+
+export default StyledDashboard;

@@ -7,22 +7,25 @@ import {
 } from './reducers/TodoList/todoList.reducer';
 import APImiddleware from './middleware/API/API.middleware';
 
-export const TodoListStore = React.createContext();
-export const useTodoListContext = () => useContext(TodoListStore);
+export const AppStore = React.createContext();
+export const useTodoListContext = () => useContext(AppStore);
 
 export const ContextTodoListProvider = (props) => {
-  const [state, dispatch] = useReducer(TodoListReducer, TodoListInitialState);
+  const [state, dispatch] = useReducer(
+    TodoListReducer, TodoListInitialState,
+  );
 
   const apiDispatch = APImiddleware(dispatch);
   const actions = apiInterface(apiDispatch);
 
   const { children } = props;
+
   return (
-    <TodoListStore.Provider value={{
+    <AppStore.Provider value={{
       state, dispatch, apiDispatch, actions,
     }}
     >
       {children}
-    </TodoListStore.Provider>
+    </AppStore.Provider>
   );
 };

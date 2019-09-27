@@ -4,9 +4,9 @@ import * as TodoContext from '../../store';
 import Todo from './Todo';
 
 const setup = todo => mount(
-  <TodoContext.TodoListStore.Provider value={{ dispatch: jest.fn() }}>
+  <TodoContext.AppStore.Provider value={{ dispatch: jest.fn() }}>
     <Todo {...todo} />
-  </TodoContext.TodoListStore.Provider>,
+  </TodoContext.AppStore.Provider>,
 );
 
 const todoWithItems = {
