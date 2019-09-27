@@ -11,7 +11,7 @@ describe('App container', () => {
     expect(wrapper.find('Memo(Header)').length).toBe(1);
   });
 
-  // test('renders Todos container', () => {
-  //   expect(wrapper.find('Memo(Todos)').length).toBe(1);
-  // });
+  test('renders Todos container', () => {
+    expect(wrapper.find('Memo(Todos)').length).toBe(1);
+  });
 });
