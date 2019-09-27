@@ -1,26 +1,30 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import * as TodoContext from '../../store';
+import { TodoListStore } from '../../store';
 import Todo from './Todo';
 
 const setup = todo => mount(
-  <TodoContext.TodoListStore.Provider value={{ dispatch: jest.fn() }}>
+  <TodoListStore.Provider value={{ dispatch: jest.fn() }}>
     <Todo {...todo} />
-  </TodoContext.TodoListStore.Provider>,
+  </TodoListStore.Provider>,
 );
+
+const setState = jest.fn();
+const useStateSpy = jest.spyOn(React, 'useState');
+useStateSpy.mockImplementation(init => [init, setState]);
+
 
 const todoWithItems = {
   items: [
     {
-      name: 'stuff',
+      stuff: 'things',
       id: '1',
     },
     {
-      name: 'things',
+      stuff: 'things',
       id: '2',
     },
   ],
-  input: 'test',
 };
 
 const todoWithoutItems = {
@@ -40,9 +44,8 @@ describe('Todo', () => {
     });
 
     test('Input thingy', () => {
-      const eventObj = { target: { value: 'changed' } };
-      wrapperWithItems.find('input[type="text"]').simulate('change', eventObj);
-      expect(wrapperWithItems.find('input[type="text"]').prop('value')).toEqual('changed');
+      wrapperWithItems.find('input[type="text"]').simulate('change', setState('test'));
+      expect(setState).toHaveBeenCalledWith('test');
     });
   });
 });
