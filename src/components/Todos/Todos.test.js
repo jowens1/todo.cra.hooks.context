@@ -16,7 +16,6 @@ describe('Todos', () => {
   };
   const wrapper = setup(newProps);
   test('renders', () => {
-    console.log(wrapper.debug());
     expect(wrapper.find('Memo(TodoList)').length).toBe(1);
   });
 });

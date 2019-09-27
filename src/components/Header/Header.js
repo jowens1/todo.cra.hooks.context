@@ -1,7 +1,29 @@
-import React, { memo } from 'react';
+/* eslint-disable react/prop-types */
+import React, { memo, useState } from 'react';
+import styled from 'styled-components';
 
-const Header = () => (
-  <h1>Todo App</h1>
+const HOCHeader = ({ className, children }) => (
+  <div className={className}>
+    {children}
+  </div>
 );
 
-export default memo(Header);
+const StyledHeader = styled(HOCHeader)`
+  text-align: center;
+`;
+
+const DumbHeader = ({ title }) => (
+  <StyledHeader>
+    <h1>{title}</h1>
+  </StyledHeader>
+);
+
+const ConnectedHeader = () => {
+  const [header] = useState('React Hooks Playground App');
+
+  return (
+    <DumbHeader title={header} />
+  );
+};
+
+export default memo(ConnectedHeader);

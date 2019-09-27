@@ -1,8 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import 'jest-styled-components'
 import Header from './Header';
 
-test('Renders header', () => {
-  const header = shallow(<Header />);
-  expect(header.find('h1').text()).toBe('Todo App');
+test('Header is styled', () => {
+  const wrapper = mount(<Header  />);
+  expect(wrapper).toHaveStyleRule('text-align', 'center');
 });
